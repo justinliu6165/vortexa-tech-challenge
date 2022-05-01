@@ -6,7 +6,24 @@ export function fetchGeoData() {
 
     return axios.get(url)
         .then(({ data }) => {
-            return data.features;
+
+            data.features.map(feat => {
+
+                console.log(feat.properties.status);
+
+                if(feat.geometry) {
+                    // Set Geojson multipolygon to point
+                    let lat = feat.geometry.coordinates[0][0][0][1];
+                    let long = feat.geometry.coordinates[0][0][0][0];
+
+                    feat.geometry.type = "Point"
+                    feat.geometry.coordinates = [long, lat];
+                }
+
+                return feat;
+            })
+
+            return data;
         })
         .catch(error => {return error} );
 }
