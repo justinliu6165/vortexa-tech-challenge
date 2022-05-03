@@ -43,4 +43,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
     * Display error handling messages when needed
 * Set up an extensive design system
     * Set up full colour scheme
-    * 
+    * Update typography, type-scale
+    * Create reusable basic components 
