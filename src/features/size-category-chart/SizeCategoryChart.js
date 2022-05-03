@@ -27,10 +27,10 @@ export default function MaterialsChart() {
   useEffect(() => {
     if(sizeCategoryData) {
       let data = {}
-      
+
       let labels = Object.keys(sizeCategoryData);
       let sizes = Object.keys(sizeCategoryData).map((sizeData => {
-        return sizeData.length
+        return sizeCategoryData[sizeData].length
       }))
 
       data = {
@@ -77,15 +77,19 @@ export default function MaterialsChart() {
       {
         label: 'Number of ramps',
         data: chartData.sizes,
-        backgroundColor: ['#38bdf8', '#4f46e5', '#7e22ce'],
+        backgroundColor: [
+          '#7d2071', 
+          '#d02d69', 
+          '#ffb014'
+        ],
       }
     ]
   };
 
   return (
     <article>
-      <div className='bg-contrast shadow-xl p-2'>
-        <div className='text-lg text-white uppercase text-primary'>Size category</div>
+      <div className='bg-contrast shadow-xl py-2 px-4'>
+        <div className='text-lg text-white uppercase font-bold text-primary'>Size category</div>
       </div>
       <div className='p-2'> 
         <Bar options={options} data={data} />

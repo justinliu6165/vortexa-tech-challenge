@@ -11,18 +11,15 @@ export default function MaterialsChart() {
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
-    let data = {}
+    let data = []
     if(materialsData) {
 
-      let labels = Object.keys(materialsData);
-      let totals = Object.keys(materialsData).map((mat => {
-        return mat.length
-      }))
-
-      data = {
-        labels,
-        totals
-      }
+      data = Object.keys(materialsData).map(material => {
+        return {
+          label: material,
+          total: materialsData[material].length
+        }
+      }).sort((a, b) => b.total - a.total)
 
       setChartData(data);
     }
@@ -41,32 +38,29 @@ export default function MaterialsChart() {
   }
 
   const data = {
-    labels: chartData.labels,
+    labels: chartData.map(mt => mt.label),
     datasets: [
       {
         label: '# of Votes',
-        data: chartData.totals,
+        data: chartData.map(mt => mt.total),
         backgroundColor: [
-          '#22d3ee',
-          '#38bdf8',
-          '#0284c7',
-          '#4f46e5',
-          '#7c3aed',
-          '#4c1d95',
-          '#7e22ce',
-          '#c026d3',
-          '#701a75',
+          "#171c5c",
+          "#7d2071",
+          "#d02d69",
+          "#ff654a",
+          "#ffb014",
+          "#fbff04",
         ],
         borderColor: "rgba(36,33,40, 0.9)",
-        borderWidth: 4,
+        borderWidth: 2,
       },
     ],
   };
 
   return (
     <article>
-      <div className='bg-contrast shadow-xl p-2'>
-        <div className='text-lg text-white uppercase text-primary'>Construction material</div>
+      <div className='bg-contrast shadow-xl py-2 px-4'>
+        <div className='text-lg text-white uppercase font-bold text-primary'>Construction material</div>
       </div>
       <div className='p-2'> 
         <Doughnut data={data} options={options} />
