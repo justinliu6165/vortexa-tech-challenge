@@ -12,6 +12,11 @@ Challenge is outlined [here](https://github.com/JRGranell/javascript-challenge) 
 
 ## How to run
 
+1. Clone this repo to local machine.
+2. `cd vortexa-tech-challenge`.
+3. Run `npm install`.
+4. Run `npm start`. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
 ### Requirements
 
 You need an API token from Map GL in `.env.local` variable called `REACT_APP_MAPBOX_TOKEN`. This will allow you access to use Map GL services.
@@ -23,15 +28,6 @@ REACT_APP_MAPBOX_TOKEN=<Mapbox token>
 ```
 
 Create or sign into https://studio.mapbox.com/.
-
-### Available Scripts
-
-In the project directory, you can run:
-
-#### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Tasks to complete later
 
