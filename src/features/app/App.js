@@ -7,7 +7,7 @@ import MapArea from '../map-area/MapArea';
 import MaterialsChart from '../materials-chart/MaterialsChart';
 import SizeCategoryChart from '../size-category-chart/SizeCategoryChart';
 
-const StatComp = ({description, value}) => {
+const StatComponent = ({description, value}) => {
   return (
     <div className="text-center bg-contrast bg-opacity-90 shadow-xl shadow-slate-300/60 p-2 px-4 rounded-md">
       <p className='m-0'>{description}</p>
@@ -42,7 +42,7 @@ function App() {
         {
           geoJson ? (<>
             <div className='flex justify-center'>
-              <StatComp description="Total number of boat ramps" value={total} />
+              <StatComponent description="Total number of boat ramps" value={total} />
             </div>
 
             <div className='mt-8'></div>
