@@ -3,9 +3,26 @@
 
 Challenge is outlined [here](https://github.com/JRGranell/javascript-challenge) by Vortexa.
 
-## Getting Started with Create React App and Redux
+## Dependencies
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+- [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+- [React Mapbox GL](https://visgl.github.io/react-map-gl/)
+- [React Chartjs 2](https://www.npmjs.com/package/react-chartjs-2)
+- [Tailwindcss](https://tailwindcss.com/) - utility CSS framework
+
+## How to run
+
+### Requirements
+
+You need an API token from Map GL in `.env.local` variable called `REACT_APP_MAPBOX_TOKEN`. This will allow you access to use Map GL services.
+
+```
+// .env.local
+
+REACT_APP_MAPBOX_TOKEN=<Mapbox token>
+```
+
+Create or sign into https://studio.mapbox.com/.
 
 ### Available Scripts
 
@@ -16,9 +33,14 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-#### `npm run build`
+## Tasks to complete later
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Show more information in the popup
+    * Reverse geolocation to show address of a ramp - [info here](https://docs.mapbox.com/api/search/geocoding/#reverse-geocoding).
+    * Retrieve photos and display
+* Instead of using markers, use clusters - [example found here](http://visgl.github.io/react-map-gl/examples/clusters).
+* Set up error handling
+    * Display error handling messages when needed
+* Set up an extensive design system
+    * Set up full colour scheme
+    * 
