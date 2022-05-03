@@ -9,8 +9,6 @@ export function fetchGeoData() {
 
             data.features.map(feat => {
 
-                console.log(feat.properties.status);
-
                 if(feat.geometry) {
                     // Set Geojson multipolygon to point
                     let lat = feat.geometry.coordinates[0][0][0][1];

@@ -6,7 +6,7 @@ export default function MapPopup({popupInfo, closePopup}) {
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
-  })
+  }, [])
 
   return (
     <Popup
@@ -18,25 +18,25 @@ export default function MapPopup({popupInfo, closePopup}) {
         >
           <div className='w-full h-full text-white ml-4 mr-6 mt-4 p-2'>
 
-            <h3 className='text-sm sm:text-lg font-bold text-primary m-0 underline underline-offset-2'>Ramp information</h3>
+            <h3 className='text-sm sm:text-lg font-bold text-primary m-0 underline underline-offset-2'>Information</h3>
 
             <table className="table-auto my-4">
               <tbody>
-                <tr>
-                    <td>Asset number: </td>
+                <tr className='align-top'>
+                    <td className='pr-2'>Asset number: </td>
                     <td>{popupInfo.properties.asset_numb}</td>
                 </tr>
-                <tr>
-                    <td>Area: </td>
+                <tr className='align-top'>
+                    <td className='pr-2'>Area: </td>
                     <td>{popupInfo.properties.area_}m<sup>2</sup></td>
                 </tr>
-                <tr>
-                    <td>Material: </td>
+                <tr className='align-top'>
+                    <td className='pr-2'>Material: </td>
                     <td>{popupInfo.properties.material}</td>
                 </tr>
                 {
-                    popupInfo.properties.comments && <tr>
-                        <td>Note: </td>
+                    popupInfo.properties.comments && <tr className='align-top'>
+                        <td className='pr-2'>Note: </td>
                         <td>{popupInfo.properties.comments}</td>
                     </tr>
                 }

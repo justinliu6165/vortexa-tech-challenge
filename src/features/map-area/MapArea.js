@@ -17,48 +17,53 @@ const MapArea = ({ geoJSON }) => {
   const [popupInfo, setPopupInfo] = useState(null);
 
   return (
-    <ReactMapGl
-      ref={MapRef}
-      initialViewState={viewState}
-      mapStyle={mapStyle}
-      mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-    >
-      {
-        geoJSON && geoJSON.features.map(feat => {
-          let longitude = feat.geometry.coordinates[0];
-          let latitude = feat.geometry.coordinates[1];
+    <article className='h-full'>
+      <div className='bg-contrast shadow-xl py-2 px-4'>
+        <div className='text-lg text-white uppercase font-bold text-primary'>Locations of boat ramps</div>
+      </div>
+      <ReactMapGl
+        ref={MapRef}
+        initialViewState={viewState}
+        mapStyle={mapStyle}
+        mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+      >
+        {
+          geoJSON && geoJSON.features.map(feat => {
+            let longitude = feat.geometry.coordinates[0];
+            let latitude = feat.geometry.coordinates[1];
 
-          return (
-            <Marker 
-              longitude={longitude} 
-              latitude={latitude} 
-              anchor="bottom" 
-              key={feat.id} 
-              onClick={e => {
-                e.originalEvent.stopPropagation(); //prevent popup from closing
+            return (
+              <Marker 
+                longitude={longitude} 
+                latitude={latitude} 
+                anchor="bottom" 
+                key={feat.id} 
+                onClick={e => {
+                  e.originalEvent.stopPropagation(); //prevent popup from closing
 
-                let shouldZoom = MapRef.current.getZoom() < viewState.zoom + 2;
-                
-                // Smooth zoom to clicked point
-                MapRef.current.flyTo({
-                  center: [longitude, latitude], 
-                  speed: shouldZoom ? 0.5 : 0.3,
-                  zoom: shouldZoom ? 13 : MapRef.current.getZoom()
-                });
+                  let shouldZoom = MapRef.current.getZoom() < viewState.zoom + 2;
+                  
+                  // Smooth zoom to clicked point
+                  MapRef.current.flyTo({
+                    center: [longitude, latitude], 
+                    speed: shouldZoom ? 0.5 : 0.3,
+                    zoom: shouldZoom ? 13 : MapRef.current.getZoom()
+                  });
 
-                // Set popup data
-                setPopupInfo(feat);
-              }}
-            >
-              <Room className="text-primary" />
-            </Marker>
-          )
-        })
-      }
+                  // Set popup data
+                  setPopupInfo(feat);
+                }}
+              >
+                <Room className="text-primary" />
+              </Marker>
+            )
+          })
+        }
 
-      {popupInfo && (<MapPopup popupInfo={popupInfo} closePopup={setPopupInfo}/>)}
+        {popupInfo && (<MapPopup popupInfo={popupInfo} closePopup={setPopupInfo}/>)}
 
-    </ReactMapGl>
+      </ReactMapGl>
+  </article>
   )
 }
 
